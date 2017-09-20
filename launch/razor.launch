@@ -1,0 +1,14 @@
+<launch>
+<!-- Based on pysical (MOCA) or simulation (Gazebo) testing choose option -->
+<group ns="Jetson">
+  <!-- start controller node-->
+  <arg name="razor_config_file" default="$(find razor_imu_9dof)/config/my_razor.yaml"/>
+  <node pkg="razor_imu_9dof" type="imu_node.py" name="imu_node" output="screen">
+    <rosparam file="$(arg razor_config_file)" command="load"/>
+  </node>
+  <!-- start estimator node-->
+  <node name="estimator" type="estimator.py" pkg="uav_geometric_controller" respawn="false" output="screen">
+    </node>
+</group>
+
+</launch>

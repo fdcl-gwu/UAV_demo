@@ -1,5 +1,7 @@
 name:
-    vicon: 'Jetson'
+    vicon: '/vicon/Jetson/pose'
+    imu: 'imu/imu'
+    xc: 'xc'
 port:
     i2c: [41,42,43,44]
 uav:

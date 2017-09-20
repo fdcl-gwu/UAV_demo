@@ -11,15 +11,14 @@
   <arg name="gui" default="true"/>
   <arg name="debug" default="false"/>
   <arg name="verbose" default="true"/>
-  <!-- start estimator node-->
-  <node name="estimator" type="estimator.py" pkg="uav_geometric_controller" respawn="false" output="screen">
-    </node>
-  <!-- start controller node-->
-  <node name="uav" type="node" pkg="uav_geometric_controller" respawn="false" output="screen">
-  </node>
+
   <arg name="razor_config_file" default="$(find razor_imu_9dof)/config/my_razor.yaml"/>
   <node pkg="razor_imu_9dof" type="imu_node.py" name="imu_node" output="screen">
     <rosparam file="$(arg razor_config_file)" command="load"/>
+  </node>
+
+  <!-- start controller node-->
+  <node name="uav" type="node" pkg="uav_geometric_controller" respawn="false" output="screen">
   </node>
 </group>
   <!-- <node name="rviz" pkg="rviz" type="rviz" output="screen" /> -->
